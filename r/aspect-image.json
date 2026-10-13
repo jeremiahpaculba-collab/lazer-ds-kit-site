@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-image",
+  "title": "Image / Aspect Ratio",
+  "description": "Locked ratio picture with the grey ratio placeholder. Kit Image / Aspect Ratio set.",
+  "registryDependencies": [
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-tokens.json"
+  ],
+  "files": [
+    {
+      "path": "registry/lazer/ui/aspect-image.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Image / Aspect Ratio · Lazer DS Starter Kit\n * Figma: Components page, Image / Aspect Ratio set. Ratio is locked; the picture fills and crops.\n * With no src it shows the grey ratio placeholder, as in the kit.\n */\nexport type Ratio = \"1:1\" | \"4:5\" | \"3:2\" | \"2:1\" | \"16:9\" | \"21:9\" | \"3:4\"\n\nexport interface AspectImageProps extends React.HTMLAttributes<HTMLDivElement> {\n  ratio?: Ratio\n  src?: string\n  alt?: string\n}\n\nexport function AspectImage({ ratio = \"3:2\", src, alt = \"\", className, ...props }: AspectImageProps) {\n  const [w, h] = ratio.split(\":\").map(Number)\n  return (\n    <div\n      data-slot=\"aspect-image\"\n      data-ratio={ratio}\n      style={{ aspectRatio: `${w} / ${h}` }}\n      className={cn(\n        \"relative w-full overflow-hidden rounded-[var(--component-image-radius)] bg-[var(--component-image-background)]\",\n        className\n      )}\n      {...props}\n    >\n      {src ? (\n        // eslint-disable-next-line @next/next/no-img-element\n        <img src={src} alt={alt} className=\"absolute inset-0 size-full object-cover\" />\n      ) : (\n        <span className=\"lz-label-ui absolute inset-0 grid place-items-center text-[var(--text-muted)]\">{ratio}</span>\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/lazer/aspect-image.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

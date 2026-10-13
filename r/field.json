@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "title": "Field",
+  "description": "Label, input and helper or error text, 240 to 480 wide. Kit Field set.",
+  "registryDependencies": [
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-tokens.json"
+  ],
+  "files": [
+    {
+      "path": "registry/lazer/ui/field.tsx",
+      "content": "\"use client\"\nimport * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Field · Lazer DS Starter Kit\n * Figma: Components page, Field set. State: Default, Focus, Error, Disabled.\n * Label, input and helper text. Width fills its parent between 240 and 480.\n */\nexport interface FieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, \"size\"> {\n  label: string\n  helper?: string\n  /** Shown instead of helper and turns the field to the Error state */\n  error?: string\n  leadingIcon?: React.ReactNode\n}\n\nexport const Field = React.forwardRef<HTMLInputElement, FieldProps>(\n  ({ label, helper, error, leadingIcon, id, className, disabled, ...props }, ref) => {\n    const auto = React.useId()\n    const inputId = id ?? auto\n    const hintId = `${inputId}-hint`\n    return (\n      <div data-slot=\"field\" className={cn(\"flex w-full min-w-[240px] max-w-[480px] flex-col gap-[var(--stack-sm)]\", className)}>\n        <label htmlFor={inputId} className=\"lz-body-small text-[var(--component-field-label)]\">\n          {label}\n        </label>\n        <div\n          className={cn(\n            \"flex items-center gap-[var(--inline-sm)] px-[var(--component-field-padding-inline)] py-[var(--component-field-padding-block)]\",\n            \"rounded-[var(--component-field-radius)] border-[length:var(--stroke-hairline)] border-solid\",\n            \"bg-[var(--component-field-background)] border-[var(--component-field-border)]\",\n            \"focus-within:border-[var(--component-field-border-focus)] focus-within:shadow-[0_0_0_1px_var(--component-field-border-focus)]\",\n            error && \"border-[var(--component-field-error)] focus-within:border-[var(--component-field-error)] focus-within:shadow-[0_0_0_1px_var(--component-field-error)]\",\n            disabled && \"bg-[var(--component-field-background-disabled)] cursor-not-allowed\"\n          )}\n        >\n          {leadingIcon ? <span className=\"inline-flex size-[var(--component-icon-size-md)] text-[var(--text-muted)] [&>svg]:size-full\">{leadingIcon}</span> : null}\n          <input\n            ref={ref}\n            id={inputId}\n            disabled={disabled}\n            aria-invalid={error ? true : undefined}\n            aria-describedby={helper || error ? hintId : undefined}\n            className=\"lz-body w-full min-w-0 bg-transparent text-[var(--text-default)] outline-none placeholder:text-[var(--component-field-placeholder)] disabled:cursor-not-allowed\"\n            {...props}\n          />\n        </div>\n        {error || helper ? (\n          <p id={hintId} className={cn(\"lz-body-small\", error ? \"text-[var(--component-field-error)]\" : \"text-[var(--text-muted)]\")}>\n            {error ?? helper}\n          </p>\n        ) : null}\n      </div>\n    )\n  }\n)\nField.displayName = \"Field\"\n",
+      "type": "registry:ui",
+      "target": "components/lazer/field.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

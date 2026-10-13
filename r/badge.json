@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge",
+  "description": "Seven tones: Accent, Neutral, Inverse, Success, Warning, Error, Info. Kit Badge set.",
+  "registryDependencies": [
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-tokens.json"
+  ],
+  "files": [
+    {
+      "path": "registry/lazer/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\n/**\n * Badge · Lazer DS Starter Kit\n * Figma: Components page, Badge set. Tone: Accent, Neutral, Inverse, Success, Warning, Error, Info.\n * Accent and Inverse are solid; Neutral and the feedback tones are tinted with a 1px edge.\n */\ntype Tone = \"accent\" | \"neutral\" | \"inverse\" | \"success\" | \"warning\" | \"error\" | \"info\"\n\nconst tones: Record<Tone, string> = {\n  accent: \"bg-[var(--component-badge-background)] text-[var(--component-badge-label)] border-transparent\",\n  inverse: \"bg-[var(--component-badge-inverse-background)] text-[var(--component-badge-inverse-label)] border-transparent\",\n  neutral: \"bg-[var(--component-badge-neutral-background)] text-[var(--component-badge-neutral-label)] border-[var(--component-badge-neutral-border)]\",\n  success: \"bg-[var(--component-badge-success-background)] text-[var(--component-badge-success-label)] border-[var(--component-badge-success-border)]\",\n  warning: \"bg-[var(--component-badge-warning-background)] text-[var(--component-badge-warning-label)] border-[var(--component-badge-warning-border)]\",\n  error: \"bg-[var(--component-badge-error-background)] text-[var(--component-badge-error-label)] border-[var(--component-badge-error-border)]\",\n  info: \"bg-[var(--component-badge-info-background)] text-[var(--component-badge-info-label)] border-[var(--component-badge-info-border)]\",\n}\n\nexport interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {\n  tone?: Tone\n  leadingIcon?: React.ReactNode\n}\n\nexport function Badge({ tone = \"accent\", leadingIcon, className, children, ...props }: BadgeProps) {\n  return (\n    <span\n      data-slot=\"badge\"\n      data-tone={tone}\n      className={cn(\n        \"lz-label-caps inline-flex items-center gap-[var(--inline-xs)] whitespace-nowrap\",\n        \"px-[var(--component-badge-padding-inline)] py-[var(--component-badge-padding-block)] rounded-[var(--component-badge-radius)]\",\n        \"border-[length:var(--stroke-hairline)] border-solid\",\n        tones[tone],\n        className\n      )}\n      {...props}\n    >\n      {leadingIcon ? <span className=\"inline-flex size-[var(--component-icon-size-sm)] [&>svg]:size-full\">{leadingIcon}</span> : null}\n      {children}\n    </span>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/lazer/badge.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

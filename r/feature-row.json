@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-row",
+  "title": "Feature Row · Three cards",
+  "description": "Three picture cards with title, copy and a link, wrapping at a 280 floor. Kit Feature Row module.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+    "https://lazer-ds-kit-site.vercel.app/r/aspect-image.json"
+  ],
+  "files": [
+    {
+      "path": "registry/lazer/blocks/feature-row.tsx",
+      "content": "import * as React from \"react\"\nimport { ArrowRight } from \"lucide-react\"\nimport { cn } from \"@/lib/utils\"\nimport { AspectImage } from \"@/components/lazer/aspect-image\"\n\n/**\n * Feature Row · Layout=Three cards · Lazer DS Starter Kit\n * Figma: Landing Page Modules, Feature Row set. Columns wrap at a 280 floor:\n * three across on Desktop, two then one on Tablet, stacked on Mobile.\n * Band padding follows 04 Responsive (grid/margin, space/section-padding-block).\n */\nexport interface FeatureItem {\n  title: string\n  body: string\n  href?: string\n  linkLabel?: string\n  image?: string\n  imageAlt?: string\n}\n\nexport interface FeatureRowProps extends React.HTMLAttributes<HTMLElement> {\n  items: FeatureItem[]\n}\n\nexport function FeatureRow({ items, className, ...props }: FeatureRowProps) {\n  return (\n    <section\n      data-slot=\"feature-row\"\n      className={cn(\n        \"w-full bg-[var(--surface-page)] px-[var(--grid-margin)] py-[var(--space-section-padding-block)]\",\n        className\n      )}\n      {...props}\n    >\n      <div className=\"mx-auto grid max-w-[var(--layout-content-max)] grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-x-[var(--inline-3xl)] gap-y-[var(--stack-4xl)]\">\n        {items.map((item) => (\n          <article key={item.title} className=\"flex flex-col gap-[var(--stack-lg)]\">\n            <AspectImage ratio=\"3:2\" src={item.image} alt={item.imageAlt} />\n            <h3 className=\"lz-h4 text-[var(--text-default)]\">{item.title}</h3>\n            <p className=\"lz-body text-[var(--text-muted)]\">{item.body}</p>\n            {item.href ? (\n              <a\n                href={item.href}\n                className=\"lz-body-emphasis inline-flex w-fit items-center gap-[var(--inline-xs)] text-[var(--component-link-label)] underline decoration-[var(--component-link-underline)] underline-offset-4 hover:text-[var(--component-link-label-hover)]\"\n              >\n                {item.linkLabel ?? \"Learn more\"}\n                <ArrowRight aria-hidden className=\"size-[var(--component-icon-size-sm)]\" />\n              </a>\n            ) : null}\n          </article>\n        ))}\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "components/lazer/blocks/feature-row.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

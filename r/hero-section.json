@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-section",
+  "title": "Hero Section · Split",
+  "description": "Announcement pill, H2 heading, supporting copy, two actions and a 3:2 picture; side by side from 1024. Kit Hero Section module.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+    "https://lazer-ds-kit-site.vercel.app/r/button.json",
+    "https://lazer-ds-kit-site.vercel.app/r/badge.json",
+    "https://lazer-ds-kit-site.vercel.app/r/aspect-image.json"
+  ],
+  "files": [
+    {
+      "path": "registry/lazer/blocks/hero-section.tsx",
+      "content": "import * as React from \"react\"\nimport { ChevronRight } from \"lucide-react\"\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/lazer/button\"\nimport { Badge } from \"@/components/lazer/badge\"\nimport { AspectImage } from \"@/components/lazer/aspect-image\"\n\n/**\n * Hero Section · Layout=Split · Lazer DS Starter Kit\n * Figma: Landing Page Modules, Hero Section set. Copy and a 3:2 picture side by side\n * from 1024 up; stacked, copy first, below that. Heading/H2, supporting copy capped at 560.\n */\nexport interface HeroSectionProps extends React.HTMLAttributes<HTMLElement> {\n  heading: string\n  supporting?: string\n  announcement?: { badge: string; message: string; href?: string }\n  primaryAction?: { label: string; href?: string; onClick?: () => void }\n  secondaryAction?: { label: string; href?: string; onClick?: () => void }\n  image?: string\n  imageAlt?: string\n}\n\nfunction Action({ label, href, onClick, variant }: { label: string; href?: string; onClick?: () => void; variant: \"primary\" | \"secondary\" }) {\n  const button = <Button variant={variant} onClick={onClick}>{label}</Button>\n  return href ? <a href={href} tabIndex={-1} className=\"contents\">{button}</a> : button\n}\n\nexport function HeroSection({ heading, supporting, announcement, primaryAction, secondaryAction, image, imageAlt, className, ...props }: HeroSectionProps) {\n  return (\n    <section\n      data-slot=\"hero-section\"\n      className={cn(\"w-full bg-[var(--surface-page)] px-[var(--grid-margin)] py-[var(--space-section-gap)]\", className)}\n      {...props}\n    >\n      <div className=\"mx-auto flex max-w-[var(--layout-content-max)] flex-col gap-[var(--space-content-gap-lg)] lg:flex-row lg:items-center\">\n        <div className=\"flex min-w-0 flex-1 flex-col gap-[var(--stack-3xl)]\">\n          <div className=\"flex flex-col gap-[var(--stack-2xl)]\">\n            {announcement ? (\n              <a\n                href={announcement.href ?? \"#\"}\n                className=\"lz-body-ui inline-flex w-fit items-center gap-[var(--inline-md)] rounded-[var(--radius-full)] border-[length:var(--stroke-hairline)] border-solid border-[var(--border-default)] bg-[var(--surface-page)] py-[var(--inset-sm)] pl-[var(--inset-sm)] pr-[var(--inset-lg)] text-[var(--text-default)]\"\n              >\n                <Badge tone=\"accent\">{announcement.badge}</Badge>\n                {announcement.message}\n                <ChevronRight aria-hidden className=\"size-[var(--component-icon-size-sm)] text-[var(--text-muted)]\" />\n              </a>\n            ) : null}\n            <h1 className=\"lz-h2 text-[var(--text-default)]\">{heading}</h1>\n            {supporting ? <p className=\"lz-body max-w-[560px] text-[var(--text-muted)]\">{supporting}</p> : null}\n          </div>\n          {primaryAction || secondaryAction ? (\n            <div className=\"flex flex-wrap gap-x-[var(--inline-md)] gap-y-[var(--stack-md)]\">\n              {primaryAction ? <Action variant=\"primary\" {...primaryAction} /> : null}\n              {secondaryAction ? <Action variant=\"secondary\" {...secondaryAction} /> : null}\n            </div>\n          ) : null}\n        </div>\n        <div className=\"min-w-0 flex-1\">\n          <AspectImage ratio=\"3:2\" src={image} alt={imageAlt} />\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:block",
+      "target": "components/lazer/blocks/hero-section.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

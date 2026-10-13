@@ -1,0 +1,194 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "lazer",
+  "homepage": "https://lazer-ds-kit-site.vercel.app",
+  "items": [
+    {
+      "name": "lazer-utils",
+      "type": "registry:lib",
+      "title": "cn helper",
+      "description": "The cn class helper used by every Lazer item. Same as the shadcn utils helper.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/lazer/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "lazer-tokens",
+      "type": "registry:style",
+      "title": "Lazer tokens",
+      "description": "All 543 shipping tokens of the Lazer DS Starter Kit as CSS custom properties, with Light and Dark, Comfortable and Compact, Full and Reduced motion, and Desktop, Tablet and Mobile modes, plus one class per text style. Also maps the shadcn theme variables onto the kit.",
+      "extends": "none",
+      "files": [
+        {
+          "path": "registry/lazer/styles/lazer-tokens.css",
+          "type": "registry:file",
+          "target": "styles/lazer-tokens.css"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "background": "var(--surface-page)",
+          "foreground": "var(--text-default)",
+          "card": "var(--surface-raised)",
+          "card-foreground": "var(--text-default)",
+          "popover": "var(--surface-raised)",
+          "popover-foreground": "var(--text-default)",
+          "primary": "var(--action-primary)",
+          "primary-foreground": "var(--text-on-action)",
+          "secondary": "var(--surface-muted)",
+          "secondary-foreground": "var(--text-default)",
+          "muted": "var(--surface-muted)",
+          "muted-foreground": "var(--text-muted)",
+          "accent": "var(--surface-selected)",
+          "accent-foreground": "var(--text-default)",
+          "destructive": "var(--action-destructive)",
+          "border": "var(--border-default)",
+          "input": "var(--border-strong)",
+          "ring": "var(--border-focus)",
+          "radius": "var(--radius-md)"
+        },
+        "dark": {
+          "background": "var(--surface-page)",
+          "foreground": "var(--text-default)",
+          "card": "var(--surface-raised)",
+          "card-foreground": "var(--text-default)",
+          "popover": "var(--surface-raised)",
+          "popover-foreground": "var(--text-default)",
+          "primary": "var(--action-primary)",
+          "primary-foreground": "var(--text-on-action)",
+          "secondary": "var(--surface-muted)",
+          "secondary-foreground": "var(--text-default)",
+          "muted": "var(--surface-muted)",
+          "muted-foreground": "var(--text-muted)",
+          "accent": "var(--surface-selected)",
+          "accent-foreground": "var(--text-default)",
+          "destructive": "var(--action-destructive)",
+          "border": "var(--border-default)",
+          "input": "var(--border-strong)",
+          "ring": "var(--border-focus)"
+        }
+      },
+      "css": {
+        "@import \"../styles/lazer-tokens.css\"": {}
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Primary, Secondary and Destructive, with Pending, Success and Error states. Kit Button set.",
+      "registryDependencies": [
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-tokens.json"
+      ],
+      "files": [
+        {
+          "path": "registry/lazer/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/lazer/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Seven tones: Accent, Neutral, Inverse, Success, Warning, Error, Info. Kit Badge set.",
+      "registryDependencies": [
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-tokens.json"
+      ],
+      "files": [
+        {
+          "path": "registry/lazer/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/lazer/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Label, input and helper or error text, 240 to 480 wide. Kit Field set.",
+      "registryDependencies": [
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-tokens.json"
+      ],
+      "files": [
+        {
+          "path": "registry/lazer/ui/field.tsx",
+          "type": "registry:ui",
+          "target": "components/lazer/field.tsx"
+        }
+      ]
+    },
+    {
+      "name": "aspect-image",
+      "type": "registry:ui",
+      "title": "Image / Aspect Ratio",
+      "description": "Locked ratio picture with the grey ratio placeholder. Kit Image / Aspect Ratio set.",
+      "registryDependencies": [
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-tokens.json"
+      ],
+      "files": [
+        {
+          "path": "registry/lazer/ui/aspect-image.tsx",
+          "type": "registry:ui",
+          "target": "components/lazer/aspect-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature-row",
+      "type": "registry:block",
+      "title": "Feature Row \u00b7 Three cards",
+      "description": "Three picture cards with title, copy and a link, wrapping at a 280 floor. Kit Feature Row module.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+        "https://lazer-ds-kit-site.vercel.app/r/aspect-image.json"
+      ],
+      "files": [
+        {
+          "path": "registry/lazer/blocks/feature-row.tsx",
+          "type": "registry:block",
+          "target": "components/lazer/blocks/feature-row.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-section",
+      "type": "registry:block",
+      "title": "Hero Section \u00b7 Split",
+      "description": "Announcement pill, H2 heading, supporting copy, two actions and a 3:2 picture; side by side from 1024. Kit Hero Section module.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://lazer-ds-kit-site.vercel.app/r/lazer-utils.json",
+        "https://lazer-ds-kit-site.vercel.app/r/button.json",
+        "https://lazer-ds-kit-site.vercel.app/r/badge.json",
+        "https://lazer-ds-kit-site.vercel.app/r/aspect-image.json"
+      ],
+      "files": [
+        {
+          "path": "registry/lazer/blocks/hero-section.tsx",
+          "type": "registry:block",
+          "target": "components/lazer/blocks/hero-section.tsx"
+        }
+      ]
+    }
+  ]
+}
