@@ -1970,6 +1970,7 @@ a.copy.skdl:hover { filter: brightness(1.08); color: #fff; }
 /* vertical rhythm inside a section: one gap between every block of content */
 .block { margin-top: 56px; }
 .block > * + * { margin-top: 18px; }
+.block.grid > * + * { margin-top: 0; }
 .block > h2 { margin-bottom: 0; }
 .block > h2 + *, .block > h2 + .prose, .block > h2 + .note, .block > h2 + .tbl-wrap, .block > h2 + .grid { margin-top: 14px; }
 .block > * + .prose, .block > * + .note { margin-top: 18px; }
@@ -2053,7 +2054,10 @@ main { overflow-x: clip; }
 .dd > select{position:absolute;inset:0;opacity:0;pointer-events:none;width:100%}
 .dd-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-width:200px;font:500 14px/1.2 var(--f-ui);color:var(--ink);background:var(--panel);border:1px solid var(--rule-strong);border-radius:10px;padding:8px 10px 8px 12px;cursor:pointer;text-align:left;transition:border-color .15s,box-shadow .15s}
 .dd-btn:hover{border-color:var(--ink-faint)}
-.dd-btn:focus-visible,.dd.open .dd-btn{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.dd-btn,.dd-btn:focus,.dd-btn:focus-visible,.dd select,.dd select:focus{outline:none!important}
+.dd select{border:0!important;box-shadow:none!important}
+.dd.open .dd-btn{border-color:var(--ink-faint);box-shadow:none}
+.dd-btn:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .dd-btn .dd-val{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .dd-btn .dd-grp{color:var(--ink-faint);font-weight:400}
 .dd-btn svg{flex:none;color:var(--ink-faint);transition:transform .15s}
@@ -2070,6 +2074,13 @@ main { overflow-x: clip; }
 .dd-o.hl{background:var(--sunken);color:var(--ink)}
 .dd-o.all{border-bottom:0}
 .dd-sep{height:1px;background:var(--rule);margin:4px 6px}
+.dd.dd-sel{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;padding:0;margin:0}
+.top-icons{display:flex;align-items:center;gap:6px;flex:none}
+.rail .rail-sub{margin:2px 0 8px 22px;padding-left:8px;border-left:1px solid var(--rule)}
+.rail .rail-sub a{font-size:13px;font-weight:500;padding:5px 10px;border-radius:6px;color:var(--ink-muted);box-shadow:none;background:none}
+.rail .rail-sub a:hover{background:var(--sunken);color:var(--ink)}
+.rail .rail-sub a.on{color:var(--ink);font-weight:600;background:var(--sunken)}
+.rail .rail-sub a i{width:20px;flex:0 0 20px}
 @media (max-width:639px){.dd,.dd-btn{width:100%}.dd-btn{min-width:0}}
 
 /* modern scrollbars everywhere (Chromium: custom; Firefox: thin standard) */
@@ -2102,6 +2113,7 @@ main { overflow-x: clip; }
       <button type="button" id="role-eng" data-role-set="engineer" aria-pressed="false">Engineer</button>
       <button type="button" id="role-both" data-role-set="both" aria-pressed="false">Both</button>
     </div>
+    <div class="top-icons">
     <button type="button" class="icon-btn" id="theme" aria-label="Switch theme" title="Switch theme">
       <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
@@ -2109,6 +2121,7 @@ main { overflow-x: clip; }
       </svg>
     </button>
     <a class="icon-btn" href="https://www.figma.com/design/JImp972lwOgzmFtQyC2PO2/Lazer-DS-Starter-Kit-v1" target="_blank" rel="noopener" aria-label="Open the kit in Figma" title="Open the kit in Figma"><svg width="13" height="15" viewBox="0 0 38 57" aria-hidden="true"><path fill="currentColor" d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0zM0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0zM19 0v19h9.5a9.5 9.5 0 1 0 0-19H19zM0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5zM0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z"/></svg></a>
+    </div>
   </header>
 
   <nav class="rail" aria-label="Pages">
@@ -2130,6 +2143,7 @@ main { overflow-x: clip; }
     <div class="rail-group">
       <a href="#components" data-nav="components"><i>69</i>Components</a>
       <a href="#modules" data-nav="modules"><i>87</i>Modules</a>
+      <div class="rail-sub" id="rail-mods" role="group" aria-label="Module pages"><a class="rs-page" data-pid="mod-global" href="#mod-global"><i>16</i>Global</a><a class="rs-page" data-pid="mod-landing-page" href="#mod-landing-page"><i>31</i>Landing page</a><a class="rs-page" data-pid="mod-ecommerce" href="#mod-ecommerce"><i>34</i>Ecommerce</a><a class="rs-page" data-pid="mod-dashboard" href="#mod-dashboard"><i>6</i>Dashboard</a></div>
       <a href="#templates" data-nav="templates"><i>9</i>Templates</a>
       <a href="#patterns" data-nav="patterns"><i></i>Patterns</a>
     </div>
@@ -2242,18 +2256,6 @@ main { overflow-x: clip; }
   <a class="out" href="https://www.figma.com/design/JImp972lwOgzmFtQyC2PO2/Lazer-DS-Starter-Kit-v1?node-id=6-15" target="_blank" rel="noopener">open the file</a>.</div>
 </div>
 
-<div class="block">
-  <h2 id="start-what-changed-in-v2">What changed in v2</h2>
-  <div class="prose"><p>Refreshed on 7 October 2026 from the live Lazer DS Starter Kit file. Every count, module, picture and icon on this site was read from the kit&rsquo;s own variables and component sets, not copied from an earlier note or from a client copy.</p></div>
-  <div class="tbl-wrap"><table><thead><tr><th>Area</th><th>Change</th></tr></thead><tbody>
-    <tr><td class="k">Tokens</td><td>One brand mode. Brand B was removed and Brand A renamed to Brand. 06 Icon Library joined as an eighth collection: a mode switch between Lucide, Tabler, Phosphor and Remix. 570 rows, 543 of which ship.</td></tr>
-    <tr><td class="k">Components</td><td>69 sets and 313 variants on the Components page, including the eleven chart families and five chart parts. The retail sets moved to the Ecommerce page and are listed under Modules.</td></tr>
-    <tr><td class="k">Modules</td><td>87 module sets across four pages: Global, Landing, Ecommerce and Dashboard. Each is indexed on the Modules page of this site.</td></tr>
-    <tr><td class="k">Templates</td><td>Nine page templates, each at Desktop 1440, Tablet 768 and Mobile 390.</td></tr>
-    <tr><td class="k">Client adaptation</td><td>A section of its own. The prompt now runs ten steps, from finding everything in the client sources through to migrating their photography, and it places every client addition inside the kit category it belongs to.</td></tr>
-    <tr><td class="k">Shopify</td><td>Schema spellings and platform limits corrected against shopify.dev, and the two brand theming material replaced by the theme handoff.</td></tr>
-  </tbody></table></div>
-</div>
 <nav class="pn" aria-label="Previous and next page"><span></span><a class="pn-next" href="#changelog"><span>Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span><b>Changelog</b></a></nav>
 </section>
 <section class="sect hide" id="foundations">
@@ -9824,7 +9826,7 @@ around it.</pre>
 <p class="eyebrow">Changelog</p>
 <h1>What changed</h1>
 <p class="lead">The kit&rsquo;s milestones, newest first.</p>
-<div class="block"><ol class="clog"><li id="cl-v3-0"><div class="clog-v"><b>v3.0</b><span>Oct 7, 2026</span></div><div class="clog-b"><h3>Hardened after the stress test</h3><ul><li>Fixed what the stress test found: token gaps, responsive spacing, stroke and radius bindings.</li><li>Every module measured and tested at the edges of its breakpoint range.</li><li>Docs rebuilt as a proper docs site with Designer and Engineer readings.</li></ul></div></li><li id="cl-v4-2"><div class="clog-v"><b>v4.2</b><span>Sep 29, 2026</span></div><div class="clog-b"><h3>Live status</h3><ul><li>Lazer icon in the browser tab and on phone home screens.</li><li>The Status page reads each Status Tag from Figma when it opens, so a change in Figma shows on the site within about five minutes, with no rebuild.</li><li>If Figma cannot be reached, the page shows the last snapshot.</li></ul></div></li><li id="cl-v4-1"><div class="clog-v"><b>v4.1</b><span>Sep 29, 2026</span></div><div class="clog-b"><h3>Status tracking</h3><ul><li>Lighter reading line and callouts: no boxes, a thin marker rule instead.</li><li>Every component and module carries a status in Figma (WIP, In review, Ready for dev, Final), and a new Status page shows them all with filters.</li></ul></div></li><li id="cl-v4-0"><div class="clog-v"><b>v4.0</b><span>Sep 29, 2026</span></div><div class="clog-b"><h3>Ready to share</h3><ul><li>Final audit passed: every component and module binds to tokens, works across its breakpoint range and in Dark.</li><li>Claude skills to download: audit, brand adaptation and new module, plus optional create, inspire and refine helpers.</li><li>Optional code registry for live previews and handoff.</li><li>Refreshed docs site.</li></ul></div></li><li id="cl-v2-0"><div class="clog-v"><b>v2.0</b><span>Late Sep 2026</span></div><div class="clog-b"><h3>Stress test</h3><ul><li>Retoned the kit to a real brand end to end (the goop worked example) to prove the adaptation runbook.</li><li>Client additions, logo tones and imagery migration added to the process.</li></ul></div></li><li id="cl-v1-0"><div class="clog-v"><b>v1.0</b><span>Early Sep 2026</span></div><div class="clog-b"><h3>First version</h3><ul><li>Token architecture in four tiers, core components, global, landing, ecommerce and dashboard modules, and page templates.</li><li>Foundations, Iconography, Image System, Interactions, Shopify and Governance pages.</li></ul></div></li></ol></div>
+<div class="block"><ol class="clog"><li id="cl-v4-2"><div class="clog-v"><b>v4.2</b><span>Oct 7, 2026</span></div><div class="clog-b"><h3>Live status</h3><ul><li>Lazer icon in the browser tab and on phone home screens.</li><li>The Status page reads each Status Tag from Figma when it opens, so a change in Figma shows on the site within about five minutes, with no rebuild.</li><li>If Figma cannot be reached, the page shows the last snapshot.</li></ul></div></li><li id="cl-v4-1"><div class="clog-v"><b>v4.1</b><span>Oct 7, 2026</span></div><div class="clog-b"><h3>Status tracking</h3><ul><li>Lighter reading line and callouts: no boxes, a thin marker rule instead.</li><li>Every component and module carries a status in Figma (WIP, In review, Ready for dev, Final), and a new Status page shows them all with filters.</li></ul></div></li><li id="cl-v4-0"><div class="clog-v"><b>v4.0</b><span>Oct 7, 2026</span></div><div class="clog-b"><h3>Ready to share</h3><ul><li>Final audit passed: every component and module binds to tokens, works across its breakpoint range and in Dark.</li><li>Claude skills to download: audit, brand adaptation and new module, plus optional create, inspire and refine helpers.</li><li>Optional code registry for live previews and handoff.</li><li>Refreshed docs site.</li></ul></div></li><li id="cl-v3-0"><div class="clog-v"><b>v3.0</b><span>Oct 7, 2026</span></div><div class="clog-b"><h3>Hardened after the stress test</h3><ul><li>Fixed what the stress test found: token gaps, responsive spacing, stroke and radius bindings.</li><li>Every module measured and tested at the edges of its breakpoint range.</li><li>Docs rebuilt as a proper docs site with Designer and Engineer readings.</li></ul></div></li><li id="cl-v2-0"><div class="clog-v"><b>v2.0</b><span>Oct 3, 2026</span></div><div class="clog-b"><h3>Stress test</h3><ul><li>Retoned the kit to a real brand end to end (the goop worked example) to prove the adaptation runbook.</li><li>Client additions, logo tones and imagery migration added to the process.</li></ul></div></li><li id="cl-v1-0"><div class="clog-v"><b>v1.0</b><span>Early Sep 2026</span></div><div class="clog-b"><h3>First version</h3><ul><li>Token architecture in four tiers, core components, global, landing, ecommerce and dashboard modules, and page templates.</li><li>Foundations, Iconography, Image System, Interactions, Shopify and Governance pages.</li></ul></div></li></ol></div>
 <nav class="pn" aria-label="Previous and next page"><a class="pn-prev" href="#start"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg> Previous</span><b>Introduction</b></a><a class="pn-next" href="#status"><span>Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span><b>Status</b></a></nav>
 </section>
 <section class="sect hide" id="status">
@@ -9836,7 +9838,7 @@ around it.</pre>
 <div class="block" id="st-summary">
   <div class="st-bar" role="img" aria-label="6 final, 149 ready for dev, 1 in review, 0 work in progress"><span class="st-seg" data-s="In review" style="flex:1"></span><span class="st-seg" data-s="Ready for dev" style="flex:149"></span><span class="st-seg" data-s="Final" style="flex:6"></span></div>
   <div class="st-counts"><button type="button" class="st-count" data-s="WIP" aria-pressed="false"><span class="st-pill" data-s="WIP">WIP</span><b>0</b></button><button type="button" class="st-count" data-s="In review" aria-pressed="false"><span class="st-pill" data-s="In review">In review</span><b>1</b></button><button type="button" class="st-count" data-s="Ready for dev" aria-pressed="false"><span class="st-pill" data-s="Ready for dev">Ready for dev</span><b>149</b></button><button type="button" class="st-count" data-s="Final" aria-pressed="false"><span class="st-pill" data-s="Final">Final</span><b>6</b></button></div>
-  <p class="st-meta">156 items · 69 components and 87 modules · synced from Figma Sep 29, 2026</p>
+  <p class="st-meta">156 items · 69 components and 87 modules · synced from Figma Oct 7, 2026</p>
 </div>
 
 <div class="block" id="st-list">
@@ -10247,6 +10249,10 @@ around it.</pre>
     }, { rootMargin: '-90px 0px -70% 0px' });
     Array.prototype.forEach.call(document.querySelectorAll('.msec[id]'), function (el) { io.observe(el); });
     mark('mod-global', '');
+    Array.prototype.forEach.call(pages, function (a) { a.addEventListener('click', function () {
+      var c = document.querySelector('.fx[data-fx="mods"] .fx-clear'); if (c && !c.disabled) c.click();
+      if (location.hash === a.getAttribute('href')) { var t = document.getElementById(a.getAttribute('data-pid')); if (t) t.scrollIntoView({ block: 'start' }); }
+    }); });
   })();
 
   /* ---- template gallery --------------------------------------------------- */
@@ -10944,14 +10950,14 @@ around it.</pre>
   var CH='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
   var n=0, openDD=null;
   function closeAll(except){ if(openDD&&openDD!==except){ openDD.close(); } }
-  document.addEventListener('click',function(e){ if(openDD&&!openDD.root.contains(e.target)) openDD.close(); });
+  document.addEventListener('click',function(e){ if(openDD&&!openDD.root.contains(e.target)&&!openDD.pop.contains(e.target)) openDD.close(); });
   function enhance(sel){
     if(sel.closest('.dd')) return;
-    var id='dd'+(++n), root=document.createElement('div'); root.className='dd';
+    var id='dd'+(++n), root=document.createElement('div'); root.className='dd dd-sel';
     sel.parentNode.insertBefore(root,sel); root.appendChild(sel); sel.tabIndex=-1; sel.setAttribute('aria-hidden','true');
     var btn=document.createElement('button'); btn.type='button'; btn.className='dd-btn'; btn.setAttribute('aria-haspopup','listbox'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label',sel.getAttribute('aria-label')||'');
     btn.innerHTML='<span class="dd-val"></span>'+CH; root.appendChild(btn);
-    var pop=document.createElement('div'); pop.className='dd-pop'; pop.id=id; pop.setAttribute('role','listbox'); pop.hidden=true; root.appendChild(pop); btn.setAttribute('aria-controls',id);
+    var pop=document.createElement('div'); pop.className='dd-pop'; pop.id=id; pop.setAttribute('role','listbox'); pop.hidden=true; document.body.appendChild(pop); btn.setAttribute('aria-controls',id);
     var items=[];
     Array.prototype.forEach.call(sel.children,function(ch,ci){
       if(ch.tagName==='OPTGROUP'){ var h=document.createElement('div'); h.className='dd-h'; h.textContent=ch.label; h.setAttribute('role','presentation'); pop.appendChild(h);
@@ -10966,13 +10972,15 @@ around it.</pre>
       v.innerHTML=''; if(d&&d._g){ var g=document.createElement('span'); g.className='dd-grp'; g.textContent=d._g+' · '; v.appendChild(g); } v.appendChild(document.createTextNode(o?o.textContent:''));
       items.forEach(function(x){ x.setAttribute('aria-selected',String(x._o===o)); }); root.classList.toggle('active',!!sel.value); }
     function choose(d){ sel.value=d._o.value; sync(); sel.dispatchEvent(new Event('change',{bubbles:true})); api.close(); btn.focus(); }
-    var api={root:root,close:function(){ pop.hidden=true; root.classList.remove('open','up'); btn.setAttribute('aria-expanded','false'); btn.removeAttribute('aria-activedescendant'); if(openDD===api) openDD=null; },
+    var api={root:root,pop:pop,close:function(){ pop.hidden=true; root.classList.remove('open','up'); btn.setAttribute('aria-expanded','false'); btn.removeAttribute('aria-activedescendant'); if(openDD===api) openDD=null; },
       open:function(){ closeAll(api); pop.hidden=false; root.classList.add('open'); btn.setAttribute('aria-expanded','true'); openDD=api;
-        place();
+        room(); place();
         var s=items.findIndex(function(x){return x.getAttribute('aria-selected')==='true';}); hl(s<0?0:s); }};
+    function room(){ pop.style.maxHeight=''; var r=btn.getBoundingClientRect(), vh=window.innerHeight, need=Math.min(pop.scrollHeight+2,360,vh*0.6), below=vh-r.bottom-12;
+      if(below<need){ var d=Math.min(need-below, r.top-80); if(d>0) window.scrollBy({top:d,left:0,behavior:'instant'}); } }
     function place(){ var r=btn.getBoundingClientRect(), vw=document.documentElement.clientWidth, vh=window.innerHeight;
       pop.style.minWidth=r.width+'px'; pop.style.maxHeight=''; var h=Math.min(pop.scrollHeight+2,360,vh*0.6), below=vh-r.bottom-12, above=r.top-12;
-      var up=below<h&&above>below; var mh=Math.max(120,Math.min(h,up?above:below)); pop.style.maxHeight=mh+'px';
+      var up=below<120&&above>below; var mh=Math.max(120,Math.min(h,up?above:below)); pop.style.maxHeight=mh+'px';
       pop.style.top=(up?r.top-6-mh:r.bottom+6)+'px'; var w=pop.offsetWidth; pop.style.left=Math.max(16,Math.min(r.left,vw-16-w))+'px'; }
     window.addEventListener('scroll',function(){ if(!pop.hidden) place(); },true); window.addEventListener('resize',function(){ if(!pop.hidden) place(); });
     btn.addEventListener('click',function(){ pop.hidden?api.open():api.close(); });
@@ -10992,4 +11000,6 @@ around it.</pre>
   }
   Array.prototype.forEach.call(document.querySelectorAll('main select, .sect select'),enhance);
 })();
-</script></body></html>
+</script>
+
+</body></html>
