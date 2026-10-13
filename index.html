@@ -2075,6 +2075,13 @@ main { overflow-x: clip; }
 .dd-o.all{border-bottom:0}
 .dd-sep{height:1px;background:var(--rule);margin:4px 6px}
 .dd.dd-sel{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible;padding:0;margin:0}
+.rail a{align-items:center}
+.rail a .rail-ic{flex:none;color:var(--ink-faint);transition:color 75ms}
+.rail a:hover .rail-ic{color:var(--ink-soft)}
+.rail a[aria-current="page"] .rail-ic{color:var(--accent)}
+.rail a > i{order:2;margin-left:auto;width:auto;flex:none;padding-left:8px;text-align:right;font-variant-numeric:tabular-nums}
+.rail a > i:empty{display:none}
+.rail .rail-sub a i{width:auto;flex:none}
 .top-icons{display:flex;align-items:center;gap:6px;flex:none}
 .rail .rail-sub{margin:2px 0 8px 22px;padding-left:8px;border-left:1px solid var(--rule)}
 .rail .rail-sub a{font-size:13px;font-weight:500;padding:5px 10px;border-radius:6px;color:var(--ink-muted);box-shadow:none;background:none}
@@ -2127,35 +2134,35 @@ main { overflow-x: clip; }
   <nav class="rail" aria-label="Pages">
     <p class="rail-title">Getting started</p>
     <div class="rail-group">
-      <a href="#start" data-nav="start"><i></i>Introduction</a>
-      <a href="#changelog" data-nav="changelog"><i></i>Changelog</a>
-      <a href="#status" data-nav="status"><i>156</i>Status</a>
+      <a href="#start" data-nav="start"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg><i></i>Introduction</a>
+      <a href="#changelog" data-nav="changelog"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg><i></i>Changelog</a>
+      <a href="#status" data-nav="status"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg><i>156</i>Status</a>
     </div>
     <p class="rail-title">Foundations</p>
     <div class="rail-group">
-      <a href="#foundations" data-nav="foundations"><i></i>Foundations</a>
-      <a href="#tokens" data-nav="tokens"><i>570</i>Tokens</a>
-      <a href="#icons" data-nav="icons"><i>146</i>Iconography</a>
-      <a href="#images" data-nav="images"><i>7</i>Image system</a>
-      <a href="#interactions" data-nav="interactions"><i>24</i>Interactions and motion</a>
+      <a href="#foundations" data-nav="foundations"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg><i></i>Foundations</a>
+      <a href="#tokens" data-nav="tokens"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg><i>570</i>Tokens</a>
+      <a href="#icons" data-nav="icons"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg><i>146</i>Iconography</a>
+      <a href="#images" data-nav="images"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg><i>7</i>Image system</a>
+      <a href="#interactions" data-nav="interactions"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg><i>24</i>Interactions and motion</a>
     </div>
     <p class="rail-title">Building blocks</p>
     <div class="rail-group">
-      <a href="#components" data-nav="components"><i>69</i>Components</a>
-      <a href="#modules" data-nav="modules"><i>87</i>Modules</a>
+      <a href="#components" data-nav="components"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5Z"/><path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2Z"/><path d="M18.5 8.5 22 12l-3.5 3.5L15 12l3.5-3.5Z"/><path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15Z"/></svg><i>69</i>Components</a>
+      <a href="#modules" data-nav="modules"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/></svg><i>87</i>Modules</a>
       <div class="rail-sub" id="rail-mods" role="group" aria-label="Module pages"><a class="rs-page" data-pid="mod-global" href="#mod-global"><i>16</i>Global</a><a class="rs-page" data-pid="mod-landing-page" href="#mod-landing-page"><i>31</i>Landing page</a><a class="rs-page" data-pid="mod-ecommerce" href="#mod-ecommerce"><i>34</i>Ecommerce</a><a class="rs-page" data-pid="mod-dashboard" href="#mod-dashboard"><i>6</i>Dashboard</a></div>
-      <a href="#templates" data-nav="templates"><i>9</i>Templates</a>
-      <a href="#patterns" data-nav="patterns"><i></i>Patterns</a>
+      <a href="#templates" data-nav="templates"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg><i>9</i>Templates</a>
+      <a href="#patterns" data-nav="patterns"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg><i></i>Patterns</a>
     </div>
     <p class="rail-title">Platform</p>
     <div class="rail-group">
-      <a href="#shopify" data-nav="shopify"><i></i>Shopify</a>
-      <a href="#code" data-nav="code"><i>8</i>Code registry</a>
+      <a href="#shopify" data-nav="shopify"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg><i></i>Shopify</a>
+      <a href="#code" data-nav="code"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg><i>8</i>Code registry</a>
     </div>
     <p class="rail-title">Process</p>
     <div class="rail-group">
-      <a href="#adapt" data-nav="adapt"><i>10</i>Client adaptation</a>
-      <a href="#governance" data-nav="governance"><i></i>Governance</a>
+      <a href="#adapt" data-nav="adapt"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.622 17.897-10.68-2.913"/><path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z"/><path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15"/></svg><i>10</i>Client adaptation</a>
+      <a href="#governance" data-nav="governance"><svg class="rail-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><i></i>Governance</a>
     </div>
   </nav>
   <aside class="toc" aria-label="On this page"><p class="toc-t">On this page</p><nav class="toc-l"></nav></aside>
